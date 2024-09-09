@@ -1,0 +1,310 @@
+﻿@model TaskOneDraft.Models.Claims
+
+@{
+    ViewData["Title"] = "Claims";
+}
+<h2>Submit Claims</h2>
+
+<form asp-action="Claims" method="post" enctype="multipart/form-data" id="claimForm">
+    <div class="form-group">
+        <label asp-for="LecturerID">Lecturer ID</label>
+        <input asp-for="LecturerID" class="form-control" />
+        <span asp-validation-for="LecturerID" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ClaimsPeriodStart"> CLaim Start Period</label>
+        <input asp-for="ClaimsPeriodStart" type="date" class="form-control" />
+        <span asp-validation-for="ClaimsPeriodStart" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="ClaimsPeriodEnd">Claim End Period</label>
+        <input asp-for="ClaimsPeriodEnd" type="date" class="form-control" />
+        <span asp-validation-for="ClaimsPeriodEnd" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="HoursWorked">Hours Worked</label>
+        <input asp-for="HoursWorked" class="form-control" id="hoursWorked" />
+        <span asp-validation-for="HoursWorked" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="RatePerHour">Rates Per Hour</label>
+        <input asp-for="RatePerHour" class="form-control" id="ratePerHour" />
+        <span asp-validation-for="RatePerHour" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DescriptionOfWork">Description of Work</label>
+        <input asp-for="DescriptionOfWork" class="form-control" />
+        <span asp-validation-for="DescriptionOfWork" class="text-danger" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SupportingDocuments">Supporting Documents</label>
+        <input asp-for="SupportingDocuments" type="file"  multiple class="form-control" />
+    </div>
+    <button type="submit" class="btn-primary">Submit</button>
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+        </script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+              rel="stylesheet" />
+      @*   <script>
+
+            $(document).ready(function () {
+                $('#claimForm').on('submit', function (event) {
+                    event.preventDefault();
+
+                    //Pasted Script
+
+                    // Clear previous toastr messages
+
+                    toastr.clear();
+
+
+
+                    // Validate required fields
+
+                    var isValid = true;
+
+                    $('#claimsForm input[required]').each(function () {
+
+                        if ($(this).val() === '') {
+
+                            isValid = false;
+
+                            return false; // Break out of the loop
+
+                        }
+
+                    });
+
+
+
+                    if (!isValid) {
+
+                        toastr.error('Error: Details missing. Please fill in all required fields.', 'Form Error', {
+
+                            "positionClass": "toast-top-right",
+
+                            "timeOut": "5000",
+
+                            "closeButton": true,
+
+                            "progressBar": true,
+
+                            "backgroundColor": "#d9534f", // Bootstrap danger color
+
+                            "toastClass": "toast toast-error"
+
+                        });
+
+                        return; // Prevent further execution
+
+                    }
+
+                    var hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
+                    var ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
+                    var totalHours = hoursWorked * ratePerHour;
+                   
+                    
+                    // toastr.success('Total amount due: ' + totalHours.toFixed(2));
+                    // var form = this;
+
+                    // Show amount calculated toastr
+
+                    toastr.success('Total amount due: ' + totalAmount.toFixed(2), 'Amount Calculated', {
+
+                        "positionClass": "toast-top-right",
+
+                        "timeOut": "5000",
+
+                        "closeButton": true,
+
+                        "progressBar": true
+
+                    });
+
+
+
+
+                    // setTimeout(function () {
+                    //     form.submit();
+                    // }, 5000); //delay on the pop up
+                    // Show submission success toastr after a delay
+
+                    setTimeout(function () {
+
+                        toastr.success('Claim has been submitted successfully!', 'Submission Successful', {
+
+                            "positionClass": "toast-top-right",
+
+                            "timeOut": "5000",
+
+                            "closeButton": true,
+
+                            "progressBar": true
+
+                        });
+
+                        // Delay form submission to allow toastr to show
+
+                        setTimeout(function () {
+
+                            $('#claimsForm')[0].submit();
+
+                        }, 1000);
+
+                    }, 1000);
+
+                });
+
+            });
+
+
+
+                });
+            });
+        </script> *@
+
+        @* Pasted *@
+        <script>
+
+            $(document).ready(function () {
+
+                $('#claimsForm').on('submit', function (event) {
+
+                    event.preventDefault();
+
+
+
+                    // Clear previous toastr messages
+
+                    toastr.clear();
+
+
+
+                    // Validate required fields
+
+                    var isValid = true;
+
+                    $('#claimsForm input[required]').each(function () {
+
+                        if ($(this).val() === '') {
+
+                            isValid = false;
+
+                            return false; // Break out of the loop
+
+                        }
+
+                    });
+
+
+
+                    if (!isValid) {
+
+                        toastr.error('Error: Details missing. Please fill in all required fields.', 'Form Error', {
+
+                            "positionClass": "toast-top-right",
+
+                            "timeOut": "5000",
+
+                            "closeButton": true,
+
+                            "progressBar": true,
+
+                            "backgroundColor": "#d9534f", // Bootstrap danger color
+
+                            "toastClass": "toast toast-error"
+
+                        });
+
+                        return; // Prevent further execution
+
+                    }
+
+          
+                    // If valid, calculate total amount
+
+                    var hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
+
+                    var ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
+
+                    var totalAmount = hoursWorked * ratePerHour;
+
+
+
+                    // Show amount calculated toastr
+
+                    toastr.success('Total amount due: ' + totalAmount.toFixed(2), 'Amount Calculated', {
+
+                        "positionClass": "toast-top-right",
+
+                        "timeOut": "5000",
+
+                        "closeButton": true,
+
+                        "progressBar": true
+
+                    });
+
+
+
+                    // Show submission success toastr after a delay
+
+                    setTimeout(function () {
+
+                        toastr.success('Claim has been submitted successfully!', 'Submission Successful', {
+
+                            "positionClass": "toast-top-right",
+
+                            "timeOut": "5000",
+
+                            "closeButton": true,
+
+                            "progressBar": true
+
+                        });
+
+
+
+                        // Delay form submission to allow toastr to show
+
+                        setTimeout(function () {
+
+                            $('#claimsForm')[0].submit();
+
+                        }, 1000);
+
+                    }, 1000);
+
+                });
+
+            });
+
+        </script>
+    }
+</form>
+
+
+
+
+
+
+
+
+
+@* @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
