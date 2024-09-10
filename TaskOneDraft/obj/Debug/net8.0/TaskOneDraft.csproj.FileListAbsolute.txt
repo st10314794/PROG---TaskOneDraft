@@ -520,3 +520,4 @@ C:\Users\Mik\source\repos\Skuul\TaskOneDraft\TaskOneDraft\obj\Debug\net8.0\refin
 C:\Users\Mik\source\repos\Skuul\TaskOneDraft\TaskOneDraft\obj\Debug\net8.0\TaskOneDraft.pdb
 C:\Users\Mik\source\repos\Skuul\TaskOneDraft\TaskOneDraft\obj\Debug\net8.0\TaskOneDraft.genruntimeconfig.cache
 C:\Users\Mik\source\repos\Skuul\TaskOneDraft\TaskOneDraft\obj\Debug\net8.0\ref\TaskOneDraft.dll
+C:\Users\Mik\source\repos\Skuul\TaskOneDraft\TaskOneDraft\obj\Debug\net8.0\TaskOneDraft.sourcelink.json

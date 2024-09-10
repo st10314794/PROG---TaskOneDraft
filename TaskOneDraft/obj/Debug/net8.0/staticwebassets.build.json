@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GQq1ogjlemBWrvvzbhEcioaNw611TfzheSlYsTnLVuw=",
+  "Hash": "cQ0jE4MwtJ8f+f5uicY96lo1tal4tz9+AuLcu/M/6Eg=",
   "Source": "TaskOneDraft",
   "BasePath": "_content/TaskOneDraft",
   "Mode": "Default",
@@ -1212,6 +1212,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\bootstrap (1).css"
+    },
+    {
+      "Identity": "C:\\Users\\Mik\\source\\repos\\Skuul\\TaskOneDraft\\TaskOneDraft\\wwwroot\\bootstrap (7).css",
+      "SourceId": "TaskOneDraft",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mik\\source\\repos\\Skuul\\TaskOneDraft\\TaskOneDraft\\wwwroot\\",
+      "BasePath": "_content/TaskOneDraft",
+      "RelativePath": "bootstrap (7).css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bootstrap (7).css"
     },
     {
       "Identity": "C:\\Users\\Mik\\source\\repos\\Skuul\\TaskOneDraft\\TaskOneDraft\\wwwroot\\css\\site.css",
