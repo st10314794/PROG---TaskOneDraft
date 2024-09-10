@@ -27,16 +27,33 @@ namespace TaskOneDraft
 
 
 
-                // Check and create admin user
-                var user = await userManager.FindByEmailAsync("adminguy@gmail.com");
+                // Check and create admin users (Programm coordinator and Academic Manager
+                var user = await userManager.FindByEmailAsync("coordinator@gmail.com");
                 if (user == null)
                 {
-                    user = new ApplicationUser { UserName = "adminguy@gmail.com", Email = "adminguy@gmail.com", EmailConfirmed = true };
-                    var result = await userManager.CreateAsync(user, "Mikhaeel!23");
+                    user = new ApplicationUser { UserName = "coordinator@gmail.com", Email = "coordinator@gmail.com", EmailConfirmed = true };
+                    var result = await userManager.CreateAsync(user, "Coordinator!23");
 
                     if (result.Succeeded)
                     {
                         await userManager.AddToRoleAsync(user, "Admin");
+                    }
+                    else
+                    {
+                        // Handle potential errors during user creation
+                        throw new InvalidOperationException("Failed to create the admin user: " + result.Errors.FirstOrDefault()?.Description);
+                    }
+                }
+                //Creating Manager user
+                var manager = await userManager.FindByEmailAsync("manager@gmail.com");
+                if (manager == null)
+                {
+                    manager = new ApplicationUser { UserName = "manager@gmail.com", Email = "manager@gmail.com", EmailConfirmed = true };
+                    var result = await userManager.CreateAsync(user, "Manager!23");
+
+                    if (result.Succeeded)
+                    {
+                        await userManager.AddToRoleAsync(manager, "Admin");
                     }
                     else
                     {
