@@ -59,241 +59,65 @@
         </script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
               rel="stylesheet" />
-      @*   <script>
+    <script>
+        $(document).ready(function () {
+            $('#claimForm').on('submit', function (event) {
+                event.preventDefault();
 
-            $(document).ready(function () {
-                $('#claimForm').on('submit', function (event) {
-                    event.preventDefault();
+                // Clear previous toastr messages
+                toastr.clear();
 
-                    //Pasted Script
+                // Validate required fields
+                var isValid = true;
 
-                    // Clear previous toastr messages
-
-                    toastr.clear();
-
-
-
-                    // Validate required fields
-
-                    var isValid = true;
-
-                    $('#claimsForm input[required]').each(function () {
-
-                        if ($(this).val() === '') {
-
-                            isValid = false;
-
-                            return false; // Break out of the loop
-
-                        }
-
-                    });
-
-
-
-                    if (!isValid) {
-
-                        toastr.error('Error: Details missing. Please fill in all required fields.', 'Form Error', {
-
-                            "positionClass": "toast-top-right",
-
-                            "timeOut": "5000",
-
-                            "closeButton": true,
-
-                            "progressBar": true,
-
-                            "backgroundColor": "#d9534f", // Bootstrap danger color
-
-                            "toastClass": "toast toast-error"
-
-                        });
-
-                        return; // Prevent further execution
-
+                $('#claimForm input[required]').each(function () {
+                    if ($(this).val() === '') {
+                        isValid = false;
+                        return false; // Break out of the loop
                     }
+                });
 
-                    var hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
-                    var ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
-                    var totalHours = hoursWorked * ratePerHour;
-                   
-                    
-                    // toastr.success('Total amount due: ' + totalHours.toFixed(2));
-                    // var form = this;
-
-                    // Show amount calculated toastr
-
-                    toastr.success('Total amount due: ' + totalAmount.toFixed(2), 'Amount Calculated', {
-
+                if (!isValid) {
+                    toastr.error('Error: Details missing. Please fill in all required fields.', 'Form Error', {
                         "positionClass": "toast-top-right",
-
                         "timeOut": "5000",
-
                         "closeButton": true,
-
                         "progressBar": true
+                    });
+                    return; // Prevent further execution
+                }
 
+                // Calculate total amount
+                var hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
+                var ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
+                var totalAmount = hoursWorked * ratePerHour;
+
+                // Show amount calculated toastr
+                toastr.success('Total amount due: ' + totalAmount.toFixed(2), 'Amount Calculated', {
+                    "positionClass": "toast-top-right",
+                    "timeOut": "5000",
+                    "closeButton": true,
+                    "progressBar": true
+                });
+
+                // Show submission success toastr after a delay
+                setTimeout(function () {
+                    toastr.success('Claim has been submitted successfully!', 'Submission Successful', {
+                        "positionClass": "toast-top-right",
+                        "timeOut": "5000",
+                        "closeButton": true,
+                        "progressBar": true
                     });
 
-
-
-
-                    // setTimeout(function () {
-                    //     form.submit();
-                    // }, 5000); //delay on the pop up
-                    // Show submission success toastr after a delay
-
+                    // Delay form submission to allow toastr to show
                     setTimeout(function () {
-
-                        toastr.success('Claim has been submitted successfully!', 'Submission Successful', {
-
-                            "positionClass": "toast-top-right",
-
-                            "timeOut": "5000",
-
-                            "closeButton": true,
-
-                            "progressBar": true
-
-                        });
-
-                        // Delay form submission to allow toastr to show
-
-                        setTimeout(function () {
-
-                            $('#claimsForm')[0].submit();
-
-                        }, 1000);
-
+                        $('#claimForm')[0].submit();
                     }, 1000);
 
-                });
-
+                }, 1000);
             });
-
-
-
-                });
-            });
-        </script> *@
-
-        @* Pasted *@
-        <script>
-
-            $(document).ready(function () {
-
-                $('#claimsForm').on('submit', function (event) {
-
-                    event.preventDefault();
-
-
-
-                    // Clear previous toastr messages
-
-                    toastr.clear();
-
-
-
-                    // Validate required fields
-
-                    var isValid = true;
-
-                    $('#claimsForm input[required]').each(function () {
-
-                        if ($(this).val() === '') {
-
-                            isValid = false;
-
-                            return false; // Break out of the loop
-
-                        }
-
-                    });
-
-
-
-                    if (!isValid) {
-
-                        toastr.error('Error: Details missing. Please fill in all required fields.', 'Form Error', {
-
-                            "positionClass": "toast-top-right",
-
-                            "timeOut": "5000",
-
-                            "closeButton": true,
-
-                            "progressBar": true,
-
-                            "backgroundColor": "#d9534f", // Bootstrap danger color
-
-                            "toastClass": "toast toast-error"
-
-                        });
-
-                        return; // Prevent further execution
-
-                    }
-
-          
-                    // If valid, calculate total amount
-
-                    var hoursWorked = parseFloat($('#hoursWorked').val()) || 0;
-
-                    var ratePerHour = parseFloat($('#ratePerHour').val()) || 0;
-
-                    var totalAmount = hoursWorked * ratePerHour;
-
-
-
-                    // Show amount calculated toastr
-
-                    toastr.success('Total amount due: ' + totalAmount.toFixed(2), 'Amount Calculated', {
-
-                        "positionClass": "toast-top-right",
-
-                        "timeOut": "5000",
-
-                        "closeButton": true,
-
-                        "progressBar": true
-
-                    });
-
-
-
-                    // Show submission success toastr after a delay
-
-                    setTimeout(function () {
-
-                        toastr.success('Claim has been submitted successfully!', 'Submission Successful', {
-
-                            "positionClass": "toast-top-right",
-
-                            "timeOut": "5000",
-
-                            "closeButton": true,
-
-                            "progressBar": true
-
-                        });
-
-
-
-                        // Delay form submission to allow toastr to show
-
-                        setTimeout(function () {
-
-                            $('#claimsForm')[0].submit();
-
-                        }, 1000);
-
-                    }, 1000);
-
-                });
-
-            });
-
-        </script>
+        });
+    </script>
     }
 </form>
 
