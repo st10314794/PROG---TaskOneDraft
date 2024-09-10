@@ -49,7 +49,7 @@ namespace TaskOneDraft
                 if (manager == null)
                 {
                     manager = new ApplicationUser { UserName = "manager@gmail.com", Email = "manager@gmail.com", EmailConfirmed = true };
-                    var result = await userManager.CreateAsync(user, "Manager!23");
+                    var result = await userManager.CreateAsync(manager, "Manager!23");
 
                     if (result.Succeeded)
                     {
